@@ -1,17 +1,17 @@
 \subsection{Feature Analysis}
 
 \begin{frame}
-\frametitle{Basic Regex References Are Missing}
+\frametitle{Basic Regex Usage References Are Missing}
 \begin{block}{feature usage statistics}
-What features are more important when...
+What features are more frequently used, and thus more important when...
 \\*\emph{building an analysis tool?}
 \\*\emph{developing test regexes?}
-\\*\emph{creating a toy language for a research project?}
+\\*\emph{creating a toy regex language for a formal experiment?}
 \end{block}
 \begin{block}{feature set summaries for variants and tools}
 What features does each language and tool support...
-\\*\emph{so I can port my regex code?}
-\\*\emph{so I can choose the best fitting language?}
+\\*\emph{so I know how to port my regex-containing code?}
+\\*\emph{so I can choose the best fitting regex variant for my needs?}
 \\*\emph{so I can choose the best analysis tool?}
 \end{block}
 \end{frame}
@@ -22,11 +22,17 @@ What features does each language and tool support...
 
 %------------------------------------------------
 
-\begin{frame}
+\begin{frame}[fragile]
 \frametitle{Why Python?}
-\begin{enumerate}
-\item back of envelope feature set comparision, seems like a good balance
-\end{enumerate}
+\begin{footnotesize}Python has most commonly shared features, few rarely shared features.\end{footnotesize}
+\begin{columns}[t] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
+\column{.45\textwidth} % Left column and width
+\input{table/features/rankedFeatureSupport}
+\column{.45\textwidth} % Right column and width
+\input{table/features/unrankedFeatureSupport}
+\end{columns}
+
+
 \end{frame}
 \note[itemize]{
     \item pt 1
@@ -37,26 +43,42 @@ What features does each language and tool support...
 
 \begin{frame}
 \frametitle{Project Selection}
-\begin{enumerate}
-\item picture of the 32 starting points
-\item impl. issues limited size of dataset obtained
-\end{enumerate}
+\begin{columns}[t] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
+\column{.5\textwidth} % Left column and width
+\begin{figure}[ht]
+  \includegraphics[scale=0.16]{nontex/illustrations/32Divided.eps}
+  \label{fig:32Divided}
+\end{figure}
+\column{.5\textwidth} % Right column and width
+\begin{figure}[ht]
+  \animategraphics[loop,width=\linewidth]{10}{nontex/smallScrapersPNG/smallScrapers-}{0}{400}
+    \label{fig:scraper}
+\end{figure}
+Out of 3,898 pseudo-randomly selected Python projects, 1,645 contained one or more utilization.
+\end{columns}
 \end{frame}
 \note[itemize]{
-    \item pt 1
-    \item pt 2
+    \item in each section, average 1312 examined
+    \item in each section, average 122 .py found
 }
 
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Utilization Defined}
-\begin{enumerate}
-\item utl. image
-\end{enumerate}
+\frametitle{Utilizations of the re module}
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.77]{nontex/illustrations/exampleUsageLarge.eps}
+  \label{fig:usage}
+\end{figure}
+\begin{description}
+\item [function] which function of the re module is called?
+\item [pattern] string used to specify regex behavior
+\item [flags] modifies the regex engine
+\end{description}
 \end{frame}
 \note[itemize]{
-    \item pt 1
+    \item 53,894 unique utilizations observed.
     \item pt 2
 }
 
@@ -65,9 +87,42 @@ What features does each language and tool support...
 
 \begin{frame}
 \frametitle{re module insights}
-\begin{enumerate}
-\item two tables
-\end{enumerate}
+\begin{figure}[ht]
+  \includegraphics[scale=0.6]{nontex/illustrations/partFunctions.eps}
+  \label{fig:partFunctions}
+\end{figure}
+\begin{figure}[ht]
+  \includegraphics[scale=0.6]{nontex/illustrations/partFlags.eps}
+  \label{fig:partFlags}
+\end{figure}
+\end{frame}
+\note[itemize]{
+    \item average utilizations per project was 32 and the maximum was 1,427
+    \item each project had an average of 11 files containing any utilization, but med was 6, so there is a skew bc of a few projects with so many
+    \item each of these files had an average of 2 utilizations (med 1)
+    \item avg 2 util. per file
+    \item max 207 util. per file
+    \item max 541 files w/utilizations, med was 2, Q3 was 6...this got skewed
+    \item
+}
+
+%------------------------------------------------
+
+
+\begin{frame}
+\frametitle{Filtering Utilizations}
+\begin{itemize}
+\item [] 53,894 unique utilizations observed.
+\item [] 12.7\% use behavioral flags
+\item [] 6.5\% were non-static patterns
+\item [] 43,525 utilizations remain
+\item [] 13,711 distinct normalized patterns
+\item [] 73 had unsupported Unicode characters
+\item [] 17 had non-Python features
+\item [] 22 had various errors
+\item [] 2 had ECOM feature - too rare to include
+\item [] 13,597 usable patterns remain for analysis
+\end{itemize}
 \end{frame}
 \note[itemize]{
     \item pt 1
@@ -75,13 +130,32 @@ What features does each language and tool support...
 }
 
 %------------------------------------------------
+
 
 
 \begin{frame}
 \frametitle{PCRE Parsing Patterns}
-\begin{enumerate}
-\item that image
-\end{enumerate}
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=1]{nontex/illustrations/featureParsing.eps}
+  \label{fig:usage}
+\end{figure}
+\begin{center}
+\begin{Large}
+All Python features are recognizable by PCRE
+\end{Large}
+\end{center}
+\end{frame}
+\note[itemize]{
+    \item pt 1
+    \item pt 2
+}
+
+%------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Feature Statistics}
+\input{table/features/splitStatsOnly}
 \end{frame}
 \note[itemize]{
     \item pt 1
@@ -91,11 +165,10 @@ What features does each language and tool support...
 %------------------------------------------------
 
 
-\begin{frame}
+
+\begin{frame}[fragile]
 \frametitle{Ranked features: Languages}
-\begin{enumerate}
-\item ranked features, eight languages combined, red circle around n guys, if possible
-\end{enumerate}
+\input{table/features/splitLanguages}
 \end{frame}
 \note[itemize]{
     \item pt 1
@@ -106,9 +179,7 @@ What features does each language and tool support...
 
 \begin{frame}
 \frametitle{Ranked features: Analysis Tools}
-\begin{enumerate}
-\item ranked features, four tools combined, red circle around n guys, if possible
-\end{enumerate}
+\input{table/features/splitTools}
 \end{frame}
 \note[itemize]{
     \item pt 1

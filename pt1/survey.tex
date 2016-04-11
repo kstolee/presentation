@@ -1,10 +1,11 @@
 \subsection{Developer Survey}
 
 \begin{frame}
-\frametitle{Survey Goals}
+\frametitle{Survey Goals And Population}
 \begin{itemize}
 \item confirm or deny parts 1 and 2:...
 \item investigate some topics: usage freq., pain points, testing, html parsing, ephem vs pers. comparision
+\item 18 Dwolla developers, average of 9 years experience
 \end{itemize}
 \end{frame}
 \note[itemize]{
@@ -41,9 +42,14 @@
 
 \begin{frame}
 \frametitle{Regex Testing}
-\begin{itemize}
-\item image of regex101
-\end{itemize}
+\input{table/codeVsRegexTest}
+\begin{figure}[ht]
+  \includegraphics[scale=0.35]{nontex/regex101}
+  \label{fig:regex101}
+\end{figure}
+\begin{center}
+50\% say they use testing tools like www.regex101.com
+\end{center}
 \end{frame}
 \note[itemize]{
     \item pt 1
@@ -53,28 +59,47 @@
 %------------------------------------------------
 
 
-\begin{frame}
+\begin{frame}[fragile]
 \frametitle{Parsing HTML}
-\begin{itemize}
-\item idk, maybe some regexes that parse html
-\end{itemize}
+\begin{center}
+Only 28\% (5) admit to using regex to parse HTML.
+\end{center}
+\begin{center}
+\cverb!<li><a href="([^"]*)">([^"]*)</a></li>!
+\end{center}
+\begin{table}
+\begin{tabular}{l l l}
+\toprule
+& \textbf{NParticipants} & \textbf{\%} \\
+\midrule
+"use only custom parser" & 4 & 22\% \\
+"use only regex" & 2 & 11\% \\
+"it depends" & 12 & 67\% \\
+\bottomrule
+\end{tabular}
+\caption{Would you rather use regex or a custom parser?  }
+\begin{block}{If it depends, why?}
+\emph{parsers are more powerful than regex, if the problem can be solved with regex I prefer regex...}
+\\* \emph{If this is a one off application than a regex will work fine.}
+\end{block}
+\end{table}
+
 \end{frame}
 \note[itemize]{
-    \item pt 1
-    \item pt 2
+    \item Of those who said it depends, there was much agreement that parsers are more powerful, better at handling complexity, and provide more readable code. Regexes were mentioned positively for handling less structured inputs, form validation and ‘one-off’ programs
 }
 
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Usage Frequency}
-\begin{itemize}
-\item idk
-\end{itemize}
+\frametitle{Usage Frequency - By Technical Environment}
+\begin{center}
+Heaviest regex use is in Command line tools and text editors.
+\end{center}
+\input{table/regexenviron}
 \end{frame}
 \note[itemize]{
-    \item pt 1
-    \item pt 2
+    \item Only 27\% (5) of participants wrote regular expressions that persist (general purpose, scripting, etc.) more frequently than in a text editor or command line tool (where they will not persist).
 }
 
 %------------------------------------------------
@@ -82,10 +107,12 @@
 
 \begin{frame}
 \frametitle{Ephemeral vs Persistent Users}
+\input{table/regexPersistingTasks}
+\input{table/persistingFeatureGroups}
 \end{frame}
 \note[itemize]{
-    \item pt 1
-    \item pt 2
+    \item The five persistent users have an average of 12.4 years of experience. This contrasts with an average of 7.7 years of experience for ephemeral users. Considering usage frequency, 60\% (3) of the five persistent users indicate using regex weekly, vs 46\% (6) of the 13 ephemeral users.
+    \item In the case of the most rarely-used feature asked about, the OPT feature, three of the four participants who have ever used the OPT feature are persistent users
 }
 
 %------------------------------------------------

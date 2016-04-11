@@ -1,41 +1,48 @@
 \subsection{Developer Survey}
-
+{
+\setbeamertemplate{background canvas}{\tikz[remember picture]\node[opacity=0.5] at (current page.center) {\includegraphics[height=1.055\textheight,keepaspectratio]{nontex/illustrations/pexels-photoSmall.jpg}};}
 \begin{frame}
-\frametitle{Survey Goals And Population}
+\frametitle{How Do Developers Say They Use Regexes?}
+\begin{block}{\begin{Large}Developer Input On Regex Usage Is Missing\end{Large}}
 \begin{itemize}
+\item \begin{large}challenge or corroborate static analysis results\end{large}
+\item \begin{large}input about usage frequency, best practices, pain points\end{large}
+\end{itemize}
+\end{block}
+\end{frame}
+}
+\note[itemize]{
+\item 18 Dwolla developers, average of 9 years experience
 \item confirm or deny parts 1 and 2:...
 \item investigate some topics: usage freq., pain points, testing, html parsing, ephem vs pers. comparision
-\item 18 Dwolla developers, average of 9 years experience
-\end{itemize}
-\end{frame}
-\note[itemize]{
-    \item pt 1
+    \item https://static.pexels.com/photos/34600/pexels-photo.jpg
     \item pt 2
 }
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Confirming PT1}
-\begin{itemize}
-\item idk
-\end{itemize}
+\frametitle{Feature Usage Is Consistent With Analysis}
+\input{table/survey/surveyQ09T13}
+\begin{center}
+Ranked Order: CG (2), STR/END (7,8), LZY (15), WNW (22), look-arounds (21, 25, 27, 28)
+\end{center}
 \end{frame}
 \note[itemize]{
-    \item pt 1
-    \item pt 2
+    \item notice that STR and END are combined
+    \item WNW may be under-rated by static analysis, LZY may be over-rated, or these developers use WNW a lot
 }
 
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Confirming PT2}
-\begin{itemize}
-\item idk
-\end{itemize}
+\frametitle{Task Frequencies are Mostly Consistent With Behavioral Categories}
+\input{table/survey/surveyQ05}
+\begin{center}
+Developers said they did not frequently search for a single character.
+\end{center}
 \end{frame}
 \note[itemize]{
-    \item pt 1
-    \item pt 2
+    \item
 }
 
 %------------------------------------------------
@@ -59,37 +66,37 @@
 %------------------------------------------------
 
 
-\begin{frame}[fragile]
-\frametitle{Parsing HTML}
-\begin{center}
-Only 28\% (5) admit to using regex to parse HTML.
-\end{center}
-\begin{center}
-\cverb!<li><a href="([^"]*)">([^"]*)</a></li>!
-\end{center}
-\begin{table}
-\begin{tabular}{l l l}
-\toprule
-& \textbf{NParticipants} & \textbf{\%} \\
-\midrule
-"use only custom parser" & 4 & 22\% \\
-"use only regex" & 2 & 11\% \\
-"it depends" & 12 & 67\% \\
-\bottomrule
-\end{tabular}
-\caption{Would you rather use regex or a custom parser?  }
-\begin{block}{If it depends, why?}
-\emph{parsers are more powerful than regex, if the problem can be solved with regex I prefer regex...}
-\\* \emph{If this is a one off application than a regex will work fine.}
-\end{block}
-\end{table}
+% \begin{frame}[fragile]
+% \frametitle{Parsing HTML}
+% \begin{center}
+% Only 28\% (5) admit to using regex to parse HTML.
+% \end{center}
+% \begin{center}
+% \cverb!<li><a href="([^"]*)">([^"]*)</a></li>!
+% \end{center}
+% \begin{table}
+% \begin{tabular}{l l l}
+% \toprule
+% & \textbf{NParticipants} & \textbf{\%} \\
+% \midrule
+% "use only custom parser" & 4 & 22\% \\
+% "use only regex" & 2 & 11\% \\
+% "it depends" & 12 & 67\% \\
+% \bottomrule
+% \end{tabular}
+% \caption{Would you rather use regex or a custom parser?  }
+% \begin{block}{If it depends, why?}
+% \emph{parsers are more powerful than regex, if the problem can be solved with regex I prefer regex...}
+% \\* \emph{If this is a one off application than a regex will work fine.}
+% \end{block}
+% \end{table}
 
-\end{frame}
-\note[itemize]{
-    \item Of those who said it depends, there was much agreement that parsers are more powerful, better at handling complexity, and provide more readable code. Regexes were mentioned positively for handling less structured inputs, form validation and ‘one-off’ programs
-}
+% \end{frame}
+% \note[itemize]{
+%     \item Of those who said it depends, there was much agreement that parsers are more powerful, better at handling complexity, and provide more readable code. Regexes were mentioned positively for handling less structured inputs, form validation and ‘one-off’ programs
+% }
 
-%------------------------------------------------
+% %------------------------------------------------
 
 \begin{frame}
 \frametitle{Usage Frequency - By Technical Environment}

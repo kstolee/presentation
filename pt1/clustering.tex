@@ -1,14 +1,20 @@
 \subsection{Behavioral Clustering}
 
+{
+\setbeamertemplate{background canvas}{\tikz[remember picture]\node[opacity=0.7] at (current page.center) {\includegraphics[keepaspectratio]{nontex/illustrations/swissArmyMess.jpg}};}
 \begin{frame}
 \frametitle{What Are Regexes Used For?}
-\begin{figure}[ht]
-  \centering
-  \includegraphics[scale=0.7]{nontex/illustrations/swissArmyMess.jpg}
-  \label{fig:whatUsedFor}
-\end{figure}
+
+\begin{block}{\begin{Large}Non-Anecdotal Knowledge About Usage Is Missing\end{Large}}
+\begin{itemize}
+\item \begin{large}task categories\end{large}
+\item \begin{large}behavioral categories\end{large}
+\end{itemize}
+\end{block}
 \end{frame}
+}
 \note[itemize]{
+\item modern agile techniques focus on user stories and use cases - designing around anecdotal knowledge is the norm for regex
     \item https://c2.staticflickr.com/4/3057/2383953694_4b148d0a61.jpg
 }
 
@@ -24,7 +30,7 @@
 \item \sout{cluster by syntactic similarity like Jaccard or longest substring}
 \item \sout{formal analytical subsumption, using hampi (94\%?) cannot get it to work}
 \item \sout{formal analytical subsumption, using brics (30\% or less)}
-\item Chosen technique: cluster by behavioral similarity using Rex (61\%)
+\item \begin{Large}Chosen technique: cluster by behavioral similarity using Rex (61\%)\end{Large}
 \end{enumerate}
 \end{frame}
 \note[itemize]{
@@ -56,7 +62,7 @@
 Rex generates 400 strings\\
 for each regex.\\
 Convert scores to half-matrix\\
-to make abc file for mcl.
+to make *.abc file for mcl.
 \end{center}
 \end{columns}
 \end{frame}
@@ -96,12 +102,27 @@ to make abc file for mcl.
 %------------------------------------------------
 
 
-\begin{frame}
+\begin{frame}[fragile]
 \frametitle{Six Categories Of Clusters}
 \input{table/clustercats}
-
-
-
+\begin{columns}[b]
+\column{.5\textwidth}
+\begin{footnotesize}
+\begin{description}
+\item [Code Search]\cverb!.*rlen=([0-9]+)!
+\item [Bracket Parsing] \cverb!<(.+)>!, \cverb!<[^>]*?>!
+\item [Anchored] \cverb!^[-_A-Za-z0-9]+$!
+\end{description}
+\end{footnotesize}
+\column{.5\textwidth}
+\begin{footnotesize}
+\begin{description}
+\item [Two Or More Chars] \cverb!@[a-z]+!
+\item [Specific Char] \cverb!:+!, \cverb!}!, \cverb!%!
+\item [Multiple Alternatives] \cverb!(\s)!, \cverb!,|;!
+\end{description}
+\end{footnotesize}
+\end{columns}
 \end{frame}
 \note[itemize]{
     \item partially successful

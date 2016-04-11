@@ -1,26 +1,32 @@
 \subsection{Feature Analysis}
 
+{
+\setbeamertemplate{background canvas}{\tikz[remember picture]\node[opacity=0.5] at (current page.center) {\includegraphics[keepaspectratio]{nontex/illustrations/galtonBoard.jpg}};}
 \begin{frame}
-\frametitle{Basic Regex Usage References Are Missing}
-\begin{block}{feature usage statistics}
-What features are more frequently used, and thus more important when...
-\\*\emph{building an analysis tool?}
-\\*\emph{developing test regexes?}
-\\*\emph{creating a toy regex language for a formal experiment?}
-\end{block}
-\begin{block}{feature set summaries for variants and tools}
-What features does each language and tool support...
-\\*\emph{so I know how to port my regex-containing code?}
-\\*\emph{so I can choose the best fitting regex variant for my needs?}
-\\*\emph{so I can choose the best analysis tool?}
+\frametitle{What Features Are Used Most Frequently?}
+\begin{block}{\begin{Large}Regex Feature Usage References Are Missing\end{Large}}
+\begin{itemize}
+\item \begin{large}feature usage statistics\end{large}
+\item \begin{large}feature set summaries for variants and tools\end{large}
+\end{itemize}
 \end{block}
 \end{frame}
+}
 \note[itemize]{
-    \item pt 1
-    \item pt 2
+    \item https://41.media.tumblr.com/deca33c79b8c4ae87b6d5cd1ffe25155/tumblr_inline_nmak5hmd9T1sh0dgh_540.jpg
+    \item What features does each language and tool support...
+\item \emph{so I know how to port my regex-containing code?}
+\item \emph{so I can choose the best fitting regex variant for my needs?}
+\item \emph{so I can choose the best analysis tool?}
+\item What features are more frequently used, and thus more important when...
+\item \emph{building an analysis tool?}
+\item \emph{developing test regexes?}
+\item \emph{creating a toy regex language for a formal experiment?}
 }
 
+
 %------------------------------------------------
+
 
 \begin{frame}[fragile]
 \frametitle{Why Python?}
@@ -69,7 +75,7 @@ Out of 3,898 pseudo-randomly selected Python projects, 1,645 contained one or mo
 \begin{figure}[h]
   \centering
   \includegraphics[scale=0.77]{nontex/illustrations/exampleUsageLarge.eps}
-  \label{fig:usage}
+  \label{fig:exampleUsageLarge}
 \end{figure}
 \begin{description}
 \item [function] which function of the re module is called?
@@ -107,25 +113,26 @@ Out of 3,898 pseudo-randomly selected Python projects, 1,645 contained one or mo
 }
 
 %------------------------------------------------
-
-
+{
+\setbeamertemplate{background canvas}{\tikz[remember picture,overlay]\node[opacity=0.3] at (current page.center) {\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{nontex/illustrations/funnel.png}};}
 \begin{frame}
-\frametitle{Filtering Utilizations}
+\frametitle{Filtering Utilizations And Patterns}
 \begin{itemize}
-\item [] 53,894 unique utilizations observed.
-\item [] 12.7\% use behavioral flags
-\item [] 6.5\% were non-static patterns
-\item [] 43,525 utilizations remain
-\item [] 13,711 distinct normalized patterns
-\item [] 73 had unsupported Unicode characters
-\item [] 17 had non-Python features
-\item [] 22 had various errors
-\item [] 2 had ECOM feature - too rare to include
-\item [] 13,597 usable patterns remain for analysis
+\item [] \textbf{53,894} unique utilizations observed.
+\item [] \begin{footnotesize}12.7\% use behavioral flags\end{footnotesize}
+\item [] \begin{footnotesize}6.5\% were non-static patterns\end{footnotesize}
+\item [] \textbf{43,525} utilizations remain
+\item [] \textbf{13,711} distinct normalized patterns
+\item [] \begin{footnotesize}73 had unsupported Unicode characters\end{footnotesize}
+\item [] \begin{footnotesize}17 had non-Python features\end{footnotesize}
+\item [] \begin{footnotesize}22 had various errors\end{footnotesize}
+\item [] \begin{footnotesize}2 had ECOM feature - too rare to include\end{footnotesize}
+\item [] \textbf{13,597} usable patterns remain for analysis
 \end{itemize}
 \end{frame}
+}
 \note[itemize]{
-    \item pt 1
+    \item https://pixabay.com/static/uploads/photo/2014/04/03/10/03/funnel-309721_960_720.png
     \item pt 2
 }
 
@@ -138,7 +145,7 @@ Out of 3,898 pseudo-randomly selected Python projects, 1,645 contained one or mo
 \begin{figure}[h]
   \centering
   \includegraphics[scale=1]{nontex/illustrations/featureParsing.eps}
-  \label{fig:usage}
+  \label{fig:featureParsing}
 \end{figure}
 \begin{center}
 \begin{Large}
@@ -164,6 +171,17 @@ All Python features are recognizable by PCRE
 
 %------------------------------------------------
 
+\begin{frame}[fragile]
+\frametitle{Feature Statistics - Top 8}
+\input{table/features/topEight}
+\end{frame}
+\note[itemize]{
+    \item present in more than 50\% of projects
+    \item pt 2
+}
+
+%------------------------------------------------
+
 
 
 \begin{frame}[fragile]
@@ -171,11 +189,22 @@ All Python features are recognizable by PCRE
 \input{table/features/splitLanguages}
 \end{frame}
 \note[itemize]{
+    \item Hampi supports the most features (25 features), followed by Rex (21 features), Automata.Z3 (14 features) and brics (12 features).
+}
+
+%------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Ranked features: Languages - Notable Missing Features}
+\input{table/features/languagesMissingFeatures}
+\end{frame}
+\note[itemize]{
     \item pt 1
     \item pt 2
 }
 
 %------------------------------------------------
+
 
 \begin{frame}
 \frametitle{Ranked features: Analysis Tools}

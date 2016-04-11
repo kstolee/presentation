@@ -1,0 +1,77 @@
+\subsection{Behavioral Clustering}
+
+\begin{frame}
+\frametitle{What Are Regexes Used For?}
+\begin{enumerate}
+\item want to know to support use cases
+\end{enumerate}
+\end{frame}
+\note[itemize]{
+    \item put thoughts here
+}
+
+%------------------------------------------------
+
+
+
+\begin{frame}
+\frametitle{How to Categorize Regex Usages}
+\begin{enumerate}
+\item \sout{thorough inspection of 55K utilizations}
+\item \sout{unguided manual categorization of 13.5k regexes, without objective basis}
+\item \sout{cluster by syntactic similarity like Jaccard or longest substring}
+\item \sout{formal analytical subsumption, using brics (30\% or less)}
+\item Chosen technique: cluster by behavioral similarity using Rex (61\%)
+\end{enumerate}
+\end{frame}
+\note[itemize]{
+    \item has2: 4694
+    \item bricsOK: 1415? 30\% or less
+    \item rexOK-actual: 2871 61\%
+}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Measuring Behavioral Similarity}
+\begin{enumerate}
+\item that  m100A stuff
+\end{enumerate}
+\end{frame}
+\note[itemize]{
+    \item has2: 4694
+    \item bricsOK: 1415? 30\% or less
+    \item rexOK-actual: 2871 61\%
+}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{MCL example}
+\begin{enumerate}
+\item very small example, use pdfs
+\end{enumerate}
+\end{frame}
+\note[itemize]{
+    \item has2: 4694
+    \item bricsOK: 1415? 30\% or less
+    \item rexOK-actual: 2871 61\%
+}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Six Categories Of Clusters}
+\input{table/clustercats}
+
+
+
+\end{frame}
+\note[itemize]{
+    \item partially successful
+    \item did identify some use cases
+    \item technique ignores 39\%
+    \item technique fails to cluster similar intent, similar syntax, similar rules, labels, etc.
+}
+
+%------------------------------------------------

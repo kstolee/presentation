@@ -13,44 +13,22 @@
 \end{frame}
 }
 \note[itemize]{
-    \item https://41.media.tumblr.com/deca33c79b8c4ae87b6d5cd1ffe25155/tumblr_inline_nmak5hmd9T1sh0dgh_540.jpg
-    \item What features does each language and tool support...
-\item \emph{so I know how to port my regex-containing code?}
-\item \emph{so I can choose the best fitting regex variant for my needs?}
-\item \emph{so I can choose the best analysis tool?}
-\item What features are more frequently used, and thus more important when...
-\item \emph{building an analysis tool?}
-\item \emph{developing test regexes?}
-\item \emph{creating a toy regex language for a formal experiment?}
+    \item the first usage study...
+    \item put yourself in the shoes of a tool designer...
+    \item there is no reference...
+    \item basic idea is to get a bunch of regexes, and count how often their features are used
 }
 
 
 %------------------------------------------------
 
-
-\begin{frame}[fragile]
-\frametitle{Why Python?}
-\begin{footnotesize}Python has most commonly shared features, few rarely shared features.\end{footnotesize}
-\begin{columns}[t] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
-\column{.45\textwidth} % Left column and width
-\input{table/features/rankedFeatureSupport}
-\column{.45\textwidth} % Right column and width
-\input{table/features/unrankedFeatureSupport}
-\end{columns}
-
-
-\end{frame}
-\note[itemize]{
-    \item pt 1
-    \item pt 2
-}
-
-%------------------------------------------------
 
 \begin{frame}
 \frametitle{Project Selection}
-\begin{columns}[t] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
-\column{.5\textwidth} % Left column and width
+\begin{center}
+Find Python projects using the GitHub API.
+\end{center}
+\begin{columns}[t]
 \begin{figure}[ht]
   \includegraphics[scale=0.16]{nontex/illustrations/32Divided.eps}
   \label{fig:32Divided}
@@ -132,7 +110,6 @@ Out of 3,898 pseudo-randomly selected Python projects, 1,645 contained one or mo
 \end{frame}
 }
 \note[itemize]{
-    \item https://pixabay.com/static/uploads/photo/2014/04/03/10/03/funnel-309721_960_720.png
     \item pt 2
 }
 
@@ -216,5 +193,26 @@ All Python features are recognizable by PCRE
 }
 
 %------------------------------------------------
+
+
+\begin{frame}[fragile]
+\frametitle{How Portable Are These Results?}
+\begin{footnotesize}Python has most commonly shared features, few rarely shared features.\end{footnotesize}
+\begin{columns}[t] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
+\column{.45\textwidth} % Left column and width
+\input{table/features/rankedFeatureSupport}
+\column{.45\textwidth} % Right column and width
+\input{table/features/unrankedFeatureSupport}
+\end{columns}
+
+
+\end{frame}
+\note[itemize]{
+    \item pt 1
+    \item pt 2
+}
+
+%------------------------------------------------
+
 
 

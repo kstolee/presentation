@@ -15,7 +15,6 @@
 }
 \note[itemize]{
 \item modern agile techniques focus on user stories and use cases - designing around anecdotal knowledge is the norm for regex
-    \item https://c2.staticflickr.com/4/3057/2383953694_4b148d0a61.jpg
 }
 
 %------------------------------------------------
@@ -25,7 +24,7 @@
 \begin{frame}
 \frametitle{How to Categorize Regex Usages}
 \begin{enumerate}
-\item \sout{thorough inspection of 55K utilizations}
+\item \sout{thorough inspection of 53K utilizations}
 \item \sout{unguided manual categorization of 4,694 regexes (in 2 or more projects), without objective basis}
 \item \sout{cluster by syntactic similarity like Jaccard or longest substring}
 \item \sout{formal analytical subsumption, using hampi (94\%?) cannot get it to work}
@@ -119,17 +118,17 @@ From 2,871 distinct regexes
 \column{.5\textwidth}
 \begin{footnotesize}
 \begin{description}
-\item [Code Search]\cverb!.*rlen=([0-9]+)!
-\item [Bracket Parsing] \cverb!<(.+)>!, \cverb!<[^>]*?>!
-\item [Anchored] \cverb!^[-_A-Za-z0-9]+$!
+\item [Multi Matches] \cverb!(\s)!, \cverb!,|;!
+\item [Specific Char] \cverb!:+!, \cverb!}!, \cverb!%!
+\item [Anchored Patterns] \cverb!^[-_A-Za-z0-9]+$!
 \end{description}
 \end{footnotesize}
 \column{.5\textwidth}
 \begin{footnotesize}
 \begin{description}
 \item [Two Or More Chars] \cverb!@[a-z]+!
-\item [Specific Char] \cverb!:+!, \cverb!}!, \cverb!%!
-\item [Multiple Alternatives] \cverb!(\s)!, \cverb!,|;!
+\item [Content of Parens] \cverb!<(.+)>!, \cverb!<[^>]*?>!
+\item [Code Search]\cverb!.*rlen=([0-9]+)!
 \end{description}
 \end{footnotesize}
 \end{columns}

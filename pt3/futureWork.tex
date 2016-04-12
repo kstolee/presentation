@@ -1,15 +1,79 @@
 \subsection{Future Work}
 
+{
+\setbeamertemplate{background canvas}{\tikz[remember picture]\node[opacity=0.6] at (current page.center) {\includegraphics[height=1.05\textheight,keepaspectratio]{nontex/illustrations/OpenDoors.jpg}};}
+\begin{frame}
+\frametitle{Opportunities For Future Work}
+\end{frame}
+}
+\note[itemize]{
+    \item http://ambcc.org/wp-content/uploads/2014/11/OpenDoors.jpg
+}
 
-\begin{frame} % Need to use the fragile option when verbatim is used in the slide
-\frametitle{Regex Refactoring}
+%------------------------------------------------
+
+\begin{frame}
+\definecolor{palespringbud}{rgb}{0.93, 0.92, 0.74}
+\definecolor{pansypurple}{rgb}{0.47, 0.09, 0.29}
+\setbeamercolor{block title}{fg=pansypurple!10!black,bg=palespringbud}
+  \setbeamercolor{block body}{parent=normal text,use=block title,
+                  bg=block title.bg!25!bg}
+\frametitle{Regex Usage Study Opportunities}
+
+\begin{block}{\begin{Large}Studying Different Sets Of Regexes\end{Large}}
 \begin{itemize}
-\item Testing and considering more edges in isolation
+\item languages other than Python
+\item codebases other than GitHub
+\item a non-random selection of projects
+\item ephemeral regexes
+\end{itemize}
+\end{block}
+
+
+\begin{block}{\begin{Large}More Research On Use Cases\end{Large}}
+\begin{itemize}
+\item cluster using formal containment
+\item manual inspection
+\item more developer surveys
+\end{itemize}
+\end{block}
+
+\end{frame}
+\note[itemize]{
+    \item other setso of regexes: buggy regex files, number of commits, developer maturity level, etc.
+    \item pt 2
+}
+
+%------------------------------------------------
+
+
+
+\begin{frame}
+\definecolor{palespringbud}{rgb}{0.93, 0.92, 0.74}
+\definecolor{pansypurple}{rgb}{0.47, 0.09, 0.29}
+\setbeamercolor{block title}{fg=pansypurple!10!black,bg=palespringbud}
+  \setbeamercolor{block body}{parent=normal text,use=block title,
+                  bg=block title.bg!25!bg}
+\frametitle{Regex Refactoring Research Opportunities}
+
+\begin{block}{\begin{Large}New Equivalence Classes:
+\\*consider more edges, isolated cases\end{Large}}
+\begin{itemize}
 \item being cognizant of number of repetitions
+\item focus on ordinary character representations
 \item size of the repeated element, and size before/after
 \item for CCC: limitations due to defaults, ranges and invisible characters
-\item
+\item separate dissimilar usage scenarios like double-letters in S2
 \end{itemize}
+\end{block}
+
+\begin{block}{\begin{Large}More preference measures:\end{Large}}
+\begin{itemize}
+\item performance and security
+\item community-specific understandability (e.g., JavaScript form validators)
+\item understandability \emph{in a code context}
+\end{itemize}
+\end{block}
 \end{frame}
 \note[itemize]{
     \item pt 1
@@ -17,3 +81,31 @@
 }
 
 %------------------------------------------------
+
+
+\begin{frame}
+\definecolor{palespringbud}{rgb}{0.93, 0.92, 0.74}
+\definecolor{pansypurple}{rgb}{0.47, 0.09, 0.29}
+\setbeamercolor{block title}{fg=pansypurple!10!black,bg=palespringbud}
+  \setbeamercolor{block body}{parent=normal text,use=block title,
+                  bg=block title.bg!25!bg}
+\frametitle{New Regex Applications}
+
+\begin{block}{\begin{Large}Testing, Analysis And Other Tools\end{Large}}
+\begin{itemize}
+\item corner-case-finding composition tools
+\item semantic search instead of composition
+\item automatic bug fixing
+\item refactoring migration tools
+\end{itemize}
+\end{block}
+\end{frame}
+\note[itemize]{
+    \item pt 1
+    \item pt 2
+}
+
+%------------------------------------------------
+
+
+

@@ -29,13 +29,15 @@
 Find Python projects using the GitHub API.
 \end{center}
 \begin{columns}[t]
+\column{.5\textwidth} % Left column and width
 \begin{figure}[ht]
   \includegraphics[scale=0.16]{nontex/illustrations/32Divided.eps}
   \label{fig:32Divided}
 \end{figure}
 \column{.5\textwidth} % Right column and width
 \begin{figure}[ht]
-  \animategraphics[loop,width=\linewidth]{10}{nontex/smallScrapersPNG/smallScrapers-}{0}{400}
+  \includegraphics[width=\linewidth]{nontex/smallScrapersPNG/smallScrapers-112}
+  % \animategraphics[loop,width=\linewidth]{10}{nontex/smallScrapersPNG/smallScrapers-}{0}{400}
     \label{fig:scraper}
 \end{figure}
 Out of 3,898 pseudo-randomly selected Python projects, 1,645 contained one or more utilization.
@@ -68,29 +70,6 @@ Out of 3,898 pseudo-randomly selected Python projects, 1,645 contained one or mo
 
 %------------------------------------------------
 
-
-\begin{frame}
-\frametitle{re module insights}
-\begin{figure}[ht]
-  \includegraphics[scale=0.6]{nontex/illustrations/partFunctions.eps}
-  \label{fig:partFunctions}
-\end{figure}
-\begin{figure}[ht]
-  \includegraphics[scale=0.6]{nontex/illustrations/partFlags.eps}
-  \label{fig:partFlags}
-\end{figure}
-\end{frame}
-\note[itemize]{
-    \item average utilizations per project was 32 and the maximum was 1,427
-    \item each project had an average of 11 files containing any utilization, but med was 6, so there is a skew bc of a few projects with so many
-    \item each of these files had an average of 2 utilizations (med 1)
-    \item avg 2 util. per file
-    \item max 207 util. per file
-    \item max 541 files w/utilizations, med was 2, Q3 was 6...this got skewed
-    \item
-}
-
-%------------------------------------------------
 {
 \setbeamertemplate{background canvas}{\tikz[remember picture,overlay]\node[opacity=0.3] at (current page.center) {\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{nontex/illustrations/funnel.png}};}
 \begin{frame}
@@ -117,25 +96,25 @@ Out of 3,898 pseudo-randomly selected Python projects, 1,645 contained one or mo
 
 
 
-\begin{frame}
-\frametitle{PCRE Parsing Patterns}
-\begin{figure}[h]
-  \centering
-  \includegraphics[scale=1]{nontex/illustrations/featureParsing.eps}
-  \label{fig:featureParsing}
-\end{figure}
-\begin{center}
-\begin{Large}
-All Python features are recognizable by PCRE
-\end{Large}
-\end{center}
-\end{frame}
-\note[itemize]{
-    \item pt 1
-    \item pt 2
-}
+% \begin{frame}
+% \frametitle{PCRE Parsing Patterns}
+% \begin{figure}[h]
+%   \centering
+%   \includegraphics[scale=1]{nontex/illustrations/featureParsing.eps}
+%   \label{fig:featureParsing}
+% \end{figure}
+% \begin{center}
+% \begin{Large}
+% All Python features are recognizable by PCRE
+% \end{Large}
+% \end{center}
+% \end{frame}
+% \note[itemize]{
+%     \item pt 1
+%     \item pt 2
+% }
 
-%------------------------------------------------
+% %------------------------------------------------
 
 \begin{frame}[fragile]
 \frametitle{Feature Statistics}
@@ -162,7 +141,7 @@ All Python features are recognizable by PCRE
 
 
 \begin{frame}[fragile]
-\frametitle{Ranked features: Languages}
+\frametitle{What Features Are Missing In Other Languages?}
 \input{table/features/splitLanguages}
 \end{frame}
 \note[itemize]{
@@ -184,7 +163,7 @@ All Python features are recognizable by PCRE
 
 
 \begin{frame}
-\frametitle{Ranked features: Analysis Tools}
+\frametitle{What Features Are Not Supported By Analysis Tools?}
 \input{table/features/splitTools}
 \end{frame}
 \note[itemize]{
@@ -196,8 +175,8 @@ All Python features are recognizable by PCRE
 
 
 \begin{frame}[fragile]
-\frametitle{How Portable Are These Results?}
-\begin{footnotesize}Python has most commonly shared features, few rarely shared features.\end{footnotesize}
+\frametitle{Comparison Of Language Feature Sets}
+% \begin{footnotesize}Python has most commonly shared features, few rarely shared features.\end{footnotesize}
 \begin{columns}[t] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
 \column{.45\textwidth} % Left column and width
 \input{table/features/rankedFeatureSupport}
@@ -213,6 +192,29 @@ All Python features are recognizable by PCRE
 }
 
 %------------------------------------------------
+
+% \begin{frame}
+% \frametitle{re module insights}
+% \begin{figure}[ht]
+%   \includegraphics[scale=0.6]{nontex/illustrations/partFunctions.eps}
+%   \label{fig:partFunctions}
+% \end{figure}
+% \begin{figure}[ht]
+%   \includegraphics[scale=0.6]{nontex/illustrations/partFlags.eps}
+%   \label{fig:partFlags}
+% \end{figure}
+% \end{frame}
+% \note[itemize]{
+%     \item average utilizations per project was 32 and the maximum was 1,427
+%     \item each project had an average of 11 files containing any utilization, but med was 6, so there is a skew bc of a few projects with so many
+%     \item each of these files had an average of 2 utilizations (med 1)
+%     \item avg 2 util. per file
+%     \item max 207 util. per file
+%     \item max 541 files w/utilizations, med was 2, Q3 was 6...this got skewed
+%     \item
+% }
+
+% %------------------------------------------------
 
 
 

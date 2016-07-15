@@ -1,0 +1,114 @@
+\subsection{Understandability}
+
+{
+\setbeamertemplate{background canvas}{\tikz[remember picture]\node[opacity=0.45] at (current page.center) {\includegraphics[width=1.155\textwidth,keepaspectratio]{nontex/illustrations/literacy.jpg}};}
+\begin{frame}
+\frametitle{What Representations Are More Understandable?}
+\begin{block}{\begin{large}Knowledge Of Regex Understandability Is Missing\end{large}}
+\begin{itemize}
+\item \begin{large}understandability is a major pain point\end{large}
+\item \begin{large}comprehension tests can determine understandability\end{large}
+\end{itemize}
+\end{block}
+\end{frame}
+}
+\note[itemize]{
+\item some note
+}
+
+%------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Covering Edges}
+\begin{center}
+14 edges (out of 24) covered by 35 regex pairs
+\\*Matching challenge for each regex given to 30 `Workers'
+\\*on Mechanical Turk.
+\end{center}
+\begin{columns}[t]
+\column{.5\textwidth}
+\begin{figure}
+  \includegraphics[scale=0.35]{nontex/illustrations/DBBExample.eps}
+  \label{fig:DBBExample}
+\end{figure}
+\column{.5\textwidth}
+\begin{itemize}
+\item[D1] \cverb!((q4f){0,1}ab)!
+\item[D2] \cverb!((q4f)?ab)!
+\item[D3] \cverb!(q4fab|ab)!
+\item[TRUE] \verb|"ab"|
+\item[FALSE] \verb|"fq4f"|
+\item[TRUE] \verb|"xyzq4fab"|
+\item[TRUE] \verb|"zlmab"|
+\item[FALSE] \verb|"qfa4"|
+\end{itemize}
+\end{columns}
+\end{frame}
+\note[itemize]{
+    \item pt 1
+    \item pt 2
+}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Testing Comprehension}
+% \begin{columns}[t]
+% \column{.5\textwidth}
+% \begin{figure}
+%   \includegraphics[scale=0.35]{nontex/illustrations/exampleQuestion.eps}
+%   \label{fig:exampleQuestion}
+% \end{figure}
+% \column{.5\textwidth}
+% \input{table/matchingMetric}
+% \end{columns}
+\begin{center}
+180 participants answered one composition and five string matching questions for 10 regexes: 10,800 data points total.
+\end{center}
+\begin{figure}
+  \includegraphics[scale=0.48]{nontex/illustrations/exampleQuestion.eps}
+  \label{fig:exampleQuestion}
+\end{figure}
+\end{frame}
+\note[itemize]{
+    \item pt 1
+    \item pt 2
+}
+
+%------------------------------------------------
+
+
+\begin{frame}
+\frametitle{Combined Edge Info}
+\input{table/testedEdgesTable}
+\end{frame}
+\note[itemize]{
+    \item pt 1
+    \item pt 2
+}
+
+%------------------------------------------------
+
+
+
+\begin{frame}
+\frametitle{Four Significant Understandability Differences, $\alpha=0.1$}
+\input{table/alpha10}
+\end{frame}
+\note[itemize]{
+    \item pt 1
+    \item pt 2
+}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Four Noteworthy Trends}
+\input{table/interestingEdges}
+\end{frame}
+\note[itemize]{
+    \item pt 1
+    \item pt 2
+}
+
+%------------------------------------------------

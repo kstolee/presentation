@@ -1,0 +1,143 @@
+\subsection{Behavioral Clustering}
+
+{
+\setbeamertemplate{background canvas}{\tikz[remember picture]\node[opacity=0.7] at (current page.center) {\includegraphics[keepaspectratio]{nontex/illustrations/swissArmyMess.jpg}};}
+\begin{frame}
+\frametitle{What Are Regexes Used For?}
+
+\begin{block}{\begin{Large}Non-Anecdotal Knowledge About Usage Is Missing\end{Large}}
+\begin{itemize}
+\item \begin{large}task categories\end{large}
+\item \begin{large}behavioral categories\end{large}
+\end{itemize}
+\end{block}
+\end{frame}
+}
+\note[itemize]{
+\item modern agile techniques focus on user stories and use cases - designing around anecdotal knowledge is the norm for regex
+}
+
+%------------------------------------------------
+
+
+
+\begin{frame}
+\frametitle{How to Categorize Regex Usages}
+\begin{enumerate}
+\item \sout{thorough inspection of 53K utilizations}
+\item \sout{unguided manual categorization of 4,694 regexes (in 2 or more projects), without objective basis}
+\item \sout{cluster by syntactic similarity like Jaccard or longest substring}
+\item \sout{formal analytical subsumption, using hampi (94\%?) cannot get it to work}
+\item \sout{formal analytical subsumption, using brics (30\% or less)}
+\item \begin{Large}Chosen technique: cluster by behavioral similarity using Rex (61\%)\end{Large}
+\end{enumerate}
+\end{frame}
+\note[itemize]{
+    \item has2: 4694
+    \item hampi:
+    \item bricsOK: 1415? 30\% or less
+    \item rexOK-actual: 2871 61\%
+}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Measuring Behavioral Similarity}
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale=0.65]{nontex/illustrations/minimalMatrix.eps}
+  \label{fig:minimalMatrix}
+\end{figure}
+
+\begin{columns}[t] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
+\column{.5\textwidth} % Left column and width
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=1]{nontex/illustrations/matrixToGraph.eps}
+  \label{fig:matrixToGraph}
+\end{figure}
+\column{.5\textwidth} % Right column and width
+\begin{center}
+Rex (\cite{Rex}) generates \\
+400 strings for each regex.\\
+Convert scores to half-matrix\\
+to make *.abc file for mcl.
+\end{center}
+\end{columns}
+\end{frame}
+
+\note[itemize]{
+    \item ok, simple
+}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{MCL example}
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale=0.24]{nontex/illustrations/mclExample.eps}
+  \label{fig:mclExample}
+\end{figure}
+mcl works by alternating between expansion and inflation (\cite{mcl})
+\end{frame}
+\note[itemize]{
+    \item has2: 4694
+    \item bricsOK: 1415? 30\% or less
+    \item rexOK-actual: 2871 61\%
+}
+
+%------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Clustering Results}
+\begin{center}
+Example Cluster
+\end{center}
+\input{table/exampleCluster}
+\begin{center}
+From 2,871 distinct regexes
+\\*186 clusters where size $\geq$ 2
+\\*2,042 unclustered regexes
+\end{center}
+\end{frame}
+
+\note[itemize]{
+    \item has2: 4694
+    \item bricsOK: 1415? 30\% or less
+    \item rexOK-actual: 2871 61\%
+}
+
+%------------------------------------------------
+
+
+\begin{frame}[fragile]
+\frametitle{Six Categories Of Clusters}
+\input{table/clustercats}
+\begin{columns}[b]
+\column{.5\textwidth}
+\begin{footnotesize}
+\begin{description}
+\item [Multi Matches] \cverb!(\s)!, \cverb!,|;!
+\item [Specific Char] \cverb!:+!, \cverb!}!, \cverb!%!
+\item [Anchored Patterns] \cverb!^[-_A-Za-z0-9]+$!
+\end{description}
+\end{footnotesize}
+\column{.5\textwidth}
+\begin{footnotesize}
+\begin{description}
+\item [Two Or More Chars] \cverb!@[a-z]+!
+\item [Content of Parens] \cverb!<(.+)>!, \cverb!<[^>]*?>!
+\item [Code Search]\cverb!.*rlen=([0-9]+)!
+\end{description}
+\end{footnotesize}
+\end{columns}
+\end{frame}
+\note[itemize]{
+    \item partially successful
+    \item did identify some use cases
+    \item technique ignores 39\%
+    \item technique fails to cluster similar intent, similar syntax, similar rules, labels, etc.
+}
+
+%------------------------------------------------

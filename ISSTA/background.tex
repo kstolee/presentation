@@ -1,11 +1,52 @@
-% !TEX root = ../slides_ISSTA.tex
+% !TEX root = slides_ISSTA.tex
 
+\subsection{Examples}
 
-\begin{frame}
-\frametitle{What is a Regular Expression?}
+\begin{frame}[fragile]
+\frametitle{Regular Expressions: The Basics}
 
-example
+\begin{Large}
+\begin{columns}
 
+\begin{column}{0.4\textwidth}
+\begin{itemize}
+\item \cverb!(ab*c|yz*)$!
+	\begin{itemize}
+		\item[\Checkmark] abbbbbbbc
+		\vspace{6pt}	
+		\item[\Checkmark] y
+		\vspace{6pt}	
+		\item[\Checkmark] abcy	
+		\vspace{12pt}	
+		\item[\XSolidBrush] \onslide<2->{abcccc }
+		\vspace{6pt}			
+		\item[\XSolidBrush] \onslide<2->{yxw}
+	\end{itemize}
+\end{itemize}
+\end{column}
+
+\begin{column}{0.4\textwidth}
+\onslide<3->
+\begin{itemize}
+	\item\cverb!(ab*c|yz*)!
+\onslide<4->
+	\begin{itemize}
+		\item[\Checkmark] abbbbbbbc
+		\vspace{6pt}		
+		\item[\Checkmark] y
+		\vspace{6pt}
+		\item[\Checkmark] abcy	
+		\vspace{12pt}	
+		\item[\Checkmark] {abcccc }
+		\vspace{6pt}		
+		\item[\Checkmark] {yxw}
+	\end{itemize}
+	
+	\end{itemize}
+	
+\end{column}
+\end{columns}
+\end{Large}
 \end{frame}
 %------------------------------------------------
 

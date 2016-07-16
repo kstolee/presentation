@@ -1,3 +1,4 @@
+% !TEX root = ../slides_ISSTA.tex
 %\subsection{Feature Analysis}
 %{
 %%\setbeamertemplate{background canvas}{\tikz[remember picture]\node[opacity=0.5] at (current page.center) {\includegraphics[keepaspectratio]{../nontex/illustrations/galtonBoard.jpg}};}
@@ -18,15 +19,12 @@
 %    \item basic idea is to get a bunch of regexes, and count how often their features are used
 %}
 
+\subsection{Sampling}
 
-%------------------------------------------------
 
 
 \begin{frame}
-\frametitle{Project Selection}
-\begin{center}
-Find Python projects using the GitHub API.
-\end{center}
+\frametitle{Project selection with the GitHub API}
 \begin{columns}[t]
 \column{.5\textwidth} % Left column and width
 \begin{figure}[ht]
@@ -39,13 +37,35 @@ Find Python projects using the GitHub API.
   % \animategraphics[loop,width=\linewidth]{10}{nontex/smallScrapersPNG/smallScrapers-}{0}{400}
     \label{fig:scraper}
 \end{figure}
-Out of 3,898 pseudo-randomly selected Python projects, 1,645 contained one or more utilization.
+Out of 3,898 pseudo-randomly selected Python projects, 1,645 (42\%) contained one or more regex utilization.
 \end{columns}
 \end{frame}
 \note[itemize]{
     \item in each section, average 1312 examined
     \item in each section, average 122 .py found
 }
+
+\begin{frame}
+\frametitle{In Python: Utilizations of the re module}
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.77]{../nontex/illustrations/exampleUsageLarge.pdf}
+  \label{fig:exampleUsageLarge}
+\end{figure}
+\begin{description}
+\item [function] which function of the re module is called?
+\item [pattern] string used to specify regex behavior
+\item [flags] modifies the regex engine
+\end{description}
+\end{frame}
+\note[itemize]{
+    \item 53,894 unique utilizations observed.
+    \item pt 2
+}
+
+
+%------------------------------------------------
+
 
 
 
@@ -54,19 +74,25 @@ Out of 3,898 pseudo-randomly selected Python projects, 1,645 contained one or mo
 {
 \setbeamertemplate{background canvas}{\tikz[remember picture,overlay]\node[opacity=0.3] at (current page.center) {\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{nontex/illustrations/funnel.png}};}
 \begin{frame}
-\frametitle{Filtering Utilizations And Patterns}
+\frametitle{Filtering utilizations and patterns}
 \begin{itemize}
 \item [] \textbf{53,894} unique utilizations observed.
 \item [] \begin{footnotesize}12.7\% use behavioral flags\end{footnotesize}
 \item [] \begin{footnotesize}6.5\% were non-static patterns\end{footnotesize}
 \item [] \textbf{43,525} utilizations remain
 \item [] \textbf{13,711} distinct normalized patterns
-\item [] \begin{footnotesize}73 had unsupported Unicode characters\end{footnotesize}
-\item [] \begin{footnotesize}17 had non-Python features\end{footnotesize}
-\item [] \begin{footnotesize}22 had various errors\end{footnotesize}
-\item [] \begin{footnotesize}2 had ECOM feature - too rare to include\end{footnotesize}
+\item [] \begin{footnotesize}114 had various errors\end{footnotesize}
+%\item [] \begin{footnotesize}17 had non-Python features\end{footnotesize}
+%\item [] \begin{footnotesize}22 had various errors\end{footnotesize}
+%\item [] \begin{footnotesize}2 had ECOM feature - too rare to include\end{footnotesize}
 \item [] \textbf{13,597} usable patterns remain for analysis
 \end{itemize}
+
+\onslide<2->
+\begin{block}{}
+Average utilizations per project: 32
+\end{block}
+
 \end{frame}
 }
 \note[itemize]{
@@ -75,41 +101,65 @@ Out of 3,898 pseudo-randomly selected Python projects, 1,645 contained one or mo
 
 %------------------------------------------------
 
+%
+%\begin{frame}
+%\frametitle{Utilization statistics}
+%\begin{itemize}
+%     \item average utilizations per project was 32 and the maximum was 1,427
+%     \item each project had an average of 11 files containing any utilization, but med was 6, so there is a skew bc of a few projects with so many
+%     \item each of these files had an average of 2 utilizations (med 1)
+%     \item avg 2 util. per file
+%     \item max 207 util. per file
+%     \item max 541 files w/utilizations, med was 2, Q3 was 6...this got skewed
+%\end{itemize}
+%\end{frame}
 
 
-% \begin{frame}
-% \frametitle{PCRE Parsing Patterns}
-% \begin{figure}[h]
-%   \centering
-%   \includegraphics[scale=1]{nontex/illustrations/featureParsing.eps}
-%   \label{fig:featureParsing}
-% \end{figure}
-% \begin{center}
-% \begin{Large}
-% All Python features are recognizable by PCRE
-% \end{Large}
-% \end{center}
-% \end{frame}
-% \note[itemize]{
-%     \item pt 1
-%     \item pt 2
-% }
+
+ \begin{frame}
+ \frametitle{PCRE Parsing Patterns}
+ \begin{figure}[h]
+   \centering
+   \includegraphics[scale=1.25]{nontex/illustrations/featureParsing.pdf}
+   \label{fig:featureParsing}
+ \end{figure}
+ \begin{center}
+ \begin{Large}
+ \onslide<2->
+ All Python features are recognizable by PCRE
+ \end{Large}
+ \end{center}
+ \end{frame}
+ \note[itemize]{
+     \item pt 1
+     \item pt 2
+ }
 
 % %------------------------------------------------
 
-\begin{frame}[fragile]
-\frametitle{Feature Statistics}
-\input{table/features/splitStatsOnly}
-\end{frame}
-\note[itemize]{
-    \item pt 1
-    \item pt 2
-}
+%\begin{frame}[fragile]
+%\frametitle{Feature Statistics}
+%\input{table/features/splitStatsOnly}
+%\end{frame}
+%\note[itemize]{
+%    \item pt 1
+%    \item pt 2
+%}
+
+%\begin{frame}
+%\frametitle{Feature analysis}
+%  \centering
+%  PCRE parser
+%  
+%  \includegraphics[scale=1.25]{../nontex/illustrations/featureParsing.pdf}
+%
+%\end{frame}
 
 %------------------------------------------------
 
+
 \begin{frame}[fragile]
-\frametitle{Feature Statistics - Top 8}
+\frametitle{Feature statistics - Top 8}
 \input{table/features/topEight}
 \end{frame}
 \note[itemize]{
@@ -117,13 +167,59 @@ Out of 3,898 pseudo-randomly selected Python projects, 1,645 contained one or mo
     \item pt 2
 }
 
+
+
+\begin{frame}
+\frametitle{Regex research tools}
+
+\begin{itemize}
+\item Remember that we wanted to write a tool to support regex creation?
+\item<2-> But regex feature usage references were missing.
+\item <3-> So, 
+\end{itemize}
+
+\onslide<4->{
+\begin{block}{}%{\begin{Large}Regex Feature Usage References Are Missing\end{Large}}
+\begin{large}How well do regex research tools meet the needs of developers? (Hampi, Rex, RE2, brics)\end{large}
+%\begin{itemize}
+%\item \begin{large}feature usage statistics\end{large}
+%\item \begin{large}feature set summaries for variants and tools\end{large}
+%\end{itemize}
+\end{block}
+}
+
+\end{frame}
+
+
 %------------------------------------------------
 
 
 
-\begin{frame}[fragile]
-\frametitle{What Features Are Missing In Other Languages?}
-\input{table/features/splitLanguages}
+%\begin{frame}[fragile]
+%\frametitle{What Features Are Missing In Other Languages?}
+%\input{table/features/splitLanguages}
+%\end{frame}
+%\note[itemize]{
+%    \item Hampi supports the most features (25 features), followed by Rex (21 features), Automata.Z3 (14 features) and brics (12 features).
+%}
+
+%------------------------------------------------
+
+%\begin{frame}[fragile]
+%\frametitle{Ranked features: Languages - Notable Missing Features}
+%\input{table/features/languagesMissingFeatures}
+%\end{frame}
+%\note[itemize]{
+%    \item pt 1
+%    \item pt 2
+%}
+
+%------------------------------------------------
+
+
+\begin{frame}
+\frametitle{Which features are  supported by analysis tools?}
+\input{table/features/splitTools}
 \end{frame}
 \note[itemize]{
     \item Hampi supports the most features (25 features), followed by Rex (21 features), Automata.Z3 (14 features) and brics (12 features).
@@ -131,57 +227,34 @@ Out of 3,898 pseudo-randomly selected Python projects, 1,645 contained one or mo
 
 %------------------------------------------------
 
-\begin{frame}[fragile]
-\frametitle{Ranked features: Languages - Notable Missing Features}
-\input{table/features/languagesMissingFeatures}
-\end{frame}
-\note[itemize]{
-    \item pt 1
-    \item pt 2
-}
 
-%------------------------------------------------
+%\begin{frame}[fragile]
+%\frametitle{Comparison Of Language Feature Sets}
+%% \begin{footnotesize}Python has most commonly shared features, few rarely shared features.\end{footnotesize}
+%\begin{columns}[t] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
+%\column{.45\textwidth} % Left column and width
+%\input{table/features/rankedFeatureSupport}
+%\column{.45\textwidth} % Right column and width
+%\input{table/features/unrankedFeatureSupport}
+%\end{columns}
+%
+%
+%\end{frame}
+%\note[itemize]{
+%    \item pt 1
+%    \item pt 2
+%}
 
-
-\begin{frame}
-\frametitle{What Features Are Not Supported By Analysis Tools?}
-\input{table/features/splitTools}
-\end{frame}
-\note[itemize]{
-    \item pt 1
-    \item pt 2
-}
-
-%------------------------------------------------
-
-
-\begin{frame}[fragile]
-\frametitle{Comparison Of Language Feature Sets}
-% \begin{footnotesize}Python has most commonly shared features, few rarely shared features.\end{footnotesize}
-\begin{columns}[t] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
-\column{.45\textwidth} % Left column and width
-\input{table/features/rankedFeatureSupport}
-\column{.45\textwidth} % Right column and width
-\input{table/features/unrankedFeatureSupport}
-\end{columns}
-
-
-\end{frame}
-\note[itemize]{
-    \item pt 1
-    \item pt 2
-}
-
-%------------------------------------------------
-
+%%------------------------------------------------
+%
 % \begin{frame}
 % \frametitle{re module insights}
 % \begin{figure}[ht]
-%   \includegraphics[scale=0.6]{nontex/illustrations/partFunctions.eps}
+%   \includegraphics[scale=0.6]{nontex/illustrations/partFunctions.pdf}
 %   \label{fig:partFunctions}
 % \end{figure}
 % \begin{figure}[ht]
-%   \includegraphics[scale=0.6]{nontex/illustrations/partFlags.eps}
+%   \includegraphics[scale=0.6]{nontex/illustrations/partFlags.pdf}
 %   \label{fig:partFlags}
 % \end{figure}
 % \end{frame}
@@ -194,8 +267,27 @@ Out of 3,898 pseudo-randomly selected Python projects, 1,645 contained one or mo
 %     \item max 541 files w/utilizations, med was 2, Q3 was 6...this got skewed
 %     \item
 % }
+%
+%% %------------------------------------------------
 
-% %------------------------------------------------
+
+\begin{frame}
+\frametitle{Notable Observations}
+
+\begin{block}{}
+\begin{itemize}
+	\item Regexes are common, but not everywhere (42\% of projects)
+	\item Current regex research tools cover the most common features
+\end{itemize}
+\end{block}
+
+\onslide<2->
+but....
+
+\onslide<3->
+\begin{block}{}
+What are the regexes doing?
+\end{block}
 
 
-
+\end{frame}

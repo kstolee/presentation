@@ -1,35 +1,41 @@
+% !TEX root = ../slides_ISSTA.tex
 \subsection{Behavioral Clustering}
 
-{
-\setbeamertemplate{background canvas}{\tikz[remember picture]\node[opacity=0.7] at (current page.center) {\includegraphics[keepaspectratio]{nontex/illustrations/swissArmyMess.jpg}};}
-\begin{frame}
-\frametitle{What Are Regexes Used For?}
-
-\begin{block}{\begin{Large}Non-Anecdotal Knowledge About Usage Is Missing\end{Large}}
-\begin{itemize}
-\item \begin{large}task categories\end{large}
-\item \begin{large}behavioral categories\end{large}
-\end{itemize}
-\end{block}
-\end{frame}
-}
-\note[itemize]{
-\item modern agile techniques focus on user stories and use cases - designing around anecdotal knowledge is the norm for regex
-}
+%{
+%\setbeamertemplate{background canvas}{\tikz[remember picture]\node[opacity=0.7] at (current page.center) {\includegraphics[keepaspectratio]{nontex/illustrations/swissArmyMess.jpg}};}
+%\begin{frame}
+%\frametitle{What Are Regexes Used For?}
+%
+%\begin{block}{\begin{Large}Non-Anecdotal Knowledge About Usage Is Missing\end{Large}}
+%\begin{itemize}
+%\item \begin{large}task categories\end{large}
+%\item \begin{large}behavioral categories\end{large}
+%\end{itemize}
+%\end{block}
+%\end{frame}
+%}
+%\note[itemize]{
+%\item modern agile techniques focus on user stories and use cases - designing around anecdotal knowledge is the norm for regex
+%}
 
 %------------------------------------------------
 
-
+%\begin{frame}
+%\frametitle{Why do developers use regexes?}
+%
+%\begin{block}{RQ4}
+%How behaviorally similar are regexes across projects?
+%\end{block}
+%\end{frame}
 
 \begin{frame}
-\frametitle{How to Categorize Regex Usages}
+\frametitle{How to find common behaviors?}
 \begin{enumerate}
 \item \sout{thorough inspection of 53K utilizations}
-\item \sout{unguided manual categorization of 4,694 regexes (in 2 or more projects), without objective basis}
 \item \sout{cluster by syntactic similarity like Jaccard or longest substring}
-\item \sout{formal analytical subsumption, using hampi (94\%?) cannot get it to work}
-\item \sout{formal analytical subsumption, using brics (30\% or less)}
-\item \begin{Large}Chosen technique: cluster by behavioral similarity using Rex (61\%)\end{Large}
+\item \sout{formal analytical subsumption, no sufficient tools at the moment}
+%\item \sout{formal analytical subsumption, using brics (30\% or less)}
+\item \begin{Large}Chosen technique: cluster by behavioral similarity using Rex \end{Large}
 \end{enumerate}
 \end{frame}
 \note[itemize]{
@@ -41,8 +47,59 @@
 
 %------------------------------------------------
 
+
+\begin{frame}[fragile]
+\frametitle{Example}
+
+\begin{Large}
+\begin{columns}
+
+\begin{column}{0.4\textwidth}
+\begin{itemize}
+\item[A] \cverb!(ab*c|yz*)$!
+	\begin{itemize}
+		\item abbbbbbbc	
+		\item y
+		\item abcy	
+		\item pac
+		\item abcyzzz
+	\end{itemize}
+\end{itemize}
+
+\onslide<2->{A matches 3/5 = 60\% of B's strings}
+
+\end{column}
+
+\begin{column}{0.4\textwidth}
+\begin{itemize}
+	\item[B] \cverb!(ab*c|yz*)!
+	\begin{itemize}
+		\item y
+		\item abc
+		\item abcy	
+		\item  {abcccc }
+		\item {yxw}
+	\end{itemize}
+	
+	\end{itemize}
+	
+\onslide<3->{B matches 5/5 = 100\% of A's strings}	
+	
+\end{column}
+\end{columns}
+
+\onslide<4-> 
+\begin{block}{}
+\begin{center}
+A and B are 80\% similar
+\end{center}
+\end{block}
+\end{Large}
+\end{frame}
+
+
 \begin{frame}
-\frametitle{Measuring Behavioral Similarity}
+\frametitle{Similarity Matrix $\rightarrow$ MCL}
 \begin{figure}[ht]
   \centering
   \includegraphics[scale=0.65]{nontex/illustrations/minimalMatrix.eps}
@@ -58,10 +115,9 @@
 \end{figure}
 \column{.5\textwidth} % Right column and width
 \begin{center}
-Rex (\cite{Rex}) generates \\
+Rex  generates \\
 400 strings for each regex.\\
-Convert scores to half-matrix\\
-to make *.abc file for mcl.
+Convert scores to half-matrix for MCL\\
 \end{center}
 \end{columns}
 \end{frame}
@@ -70,22 +126,26 @@ to make *.abc file for mcl.
     \item ok, simple
 }
 
+
+
+
+
 %------------------------------------------------
 
-\begin{frame}
-\frametitle{MCL example}
-\begin{figure}[ht]
-  \centering
-  \includegraphics[scale=0.24]{nontex/illustrations/mclExample.eps}
-  \label{fig:mclExample}
-\end{figure}
-mcl works by alternating between expansion and inflation (\cite{mcl})
-\end{frame}
-\note[itemize]{
-    \item has2: 4694
-    \item bricsOK: 1415? 30\% or less
-    \item rexOK-actual: 2871 61\%
-}
+%\begin{frame}
+%\frametitle{MCL example}
+%\begin{figure}[ht]
+%  \centering
+%  \includegraphics[scale=0.24]{nontex/illustrations/mclExample.eps}
+%  \label{fig:mclExample}
+%\end{figure}
+%mcl works by alternating between expansion and inflation (\cite{mcl})
+%\end{frame}
+%\note[itemize]{
+%    \item has2: 4694
+%    \item bricsOK: 1415? 30\% or less
+%    \item rexOK-actual: 2871 61\%
+%}
 
 %------------------------------------------------
 
@@ -139,5 +199,28 @@ From 2,871 distinct regexes
     \item technique ignores 39\%
     \item technique fails to cluster similar intent, similar syntax, similar rules, labels, etc.
 }
+
+
+
+\begin{frame}
+\frametitle{Notable Observations}
+
+\begin{block}{}
+\begin{itemize}
+	\item Finding a specific character is quite common, 25\% of projects (in contrast with survey)
+	\item Regexes are often used to parse source code!
+\end{itemize}
+\end{block}
+
+\onslide<2->
+but....
+
+\onslide<3->
+\begin{block}{}
+What's the bigger picture?
+\end{block}
+
+
+\end{frame}
 
 %------------------------------------------------

@@ -22,7 +22,7 @@
 \subsection{Sampling}
 
 \begin{frame}
-\frametitle{Part 2}
+\frametitle{Part 2: Features}
 
 \begin{block}{RQ3}
 Which regular expression language features are most commonly used in Python?
@@ -82,16 +82,16 @@ Of 3,898 Python projects, 1,645 (42\%) contained one or more regex utilization.
 \begin{frame}
 \frametitle{Filtering utilizations and patterns}
 \begin{itemize}
-\item [] \textbf{53,894} unique utilizations observed.
+\item [] \textbf{53,894} unique utilizations observed in 1,645 projects.
 \item [] \begin{footnotesize}12.7\% use behavioral flags\end{footnotesize}
 \item [] \begin{footnotesize}6.5\% were non-static patterns\end{footnotesize}
 \item [] \textbf{43,525} utilizations remain
-\item<2-> [] \textbf{13,711} distinct normalized patterns
+\item<2-> [] \textbf{13,711} distinct  patterns
 \item<2-> [] \begin{footnotesize}114 had various errors\end{footnotesize}
 %\item [] \begin{footnotesize}17 had non-Python features\end{footnotesize}
 %\item [] \begin{footnotesize}22 had various errors\end{footnotesize}
 %\item [] \begin{footnotesize}2 had ECOM feature - too rare to include\end{footnotesize}
-\item<3-> [] \textbf{13,597} usable patterns from 1,645 projects remain for analysis
+\item<3-> [] \textbf{13,597} patterns from 1,544 projects remain for analysis
 \end{itemize}
 
 %\onslide<4->
@@ -186,9 +186,9 @@ Of 3,898 Python projects, 1,645 (42\%) contained one or more regex utilization.
 \item <3-> So, 
 \end{itemize}
 
-
+\onslide<3->
 \begin{block}{}%{\begin{Large}Regex Feature Usage References Are Missing\end{Large}}
-\begin{large}How well do past and present regex research tools meet the needs of developers? (Hampi, Rex, RE2, brics, Automata.Z3)\end{large}
+\begin{large}We analyzed \emph{your} tools instead! (Hampi, Rex, RE2, brics, Automata.Z3)\end{large}
 %\begin{itemize}
 %\item \begin{large}feature usage statistics\end{large}
 %\item \begin{large}feature set summaries for variants and tools\end{large}
@@ -278,36 +278,14 @@ Of 3,898 Python projects, 1,645 (42\%) contained one or more regex utilization.
 %
 %% %------------------------------------------------
 
-\begin{frame}
-\frametitle{Survey vs. Repository}
-
-How often do you use.... 
-
-\begin{center}
-\begin{tabular}{llcr}
-\toprule
-\textbf{Group} & \textbf{Code} &  \textbf{Survey} & \textbf{Repo Rank} \\  \hline 
-endpoint anchors & (STR, END) & 4.4 & 7, 8\\ \hline 
-capture groups & (CG) & 4.2 & 2 \\ \hline 
-word boundaries & (WNW) & 3.5 & 22 \\ \hline 
-lazy repetition & (LZY) &  2.9 & 15 \\ \hline 
-(neg) look-ahead/behind &  (LKA, NLKA,  & 2.5 & 25, 21\\
-& LKB, NLKB) & & 28, 27\\
-\bottomrule
-\end{tabular}
-
-\textcolor{red}{Key: 6 = very frequently, 5 = frequently, 4 = occasionally, \\3 = rarely, 2 = very rarely, 1 = never}
-\end{center}
-
-\end{frame}
 %recall bias, bad sample of programs, or difference between ephemeral and persistent regexes
 
 \begin{frame}
-\frametitle{Notable Observations}
+\frametitle{Notable observations: Features}
 
 \begin{block}{}
 \begin{itemize}
-	\item Regexes are common, but not everywhere (42\% of projects, 32 utilizations per project)
+	\item {\em Regexes are} (sort of) {\em everywhere} (42\% of projects, 32 utilizations per project)
 	\item Current regex research tools cover the most common features
 \end{itemize}
 \end{block}

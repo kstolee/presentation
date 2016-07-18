@@ -40,8 +40,8 @@ Does regex feature usage vary based on environment (IDE, code, text editor, etc.
 \frametitle{Recap}
 
 \begin{itemize}
-\item Regexes are (sort of) everywhere! (42\% of Python projects studied, but more frequently in text editors and IDEs)
-\item<2-> Everyone writes regexes! (50\% of  deves write them weekly)
+\item Regexes are (sort of) everywhere! (42\% of Python projects)
+\item<2-> Everyone (sort of) writes regexes! (50\% of deves weekly)
 \item<3-> Regexes are hard to read/write! (this is a pain point)
 \end{itemize}
 
@@ -74,5 +74,30 @@ Katie Stolee -- ktstolee@ncsu.edu
 }
 
 %----------------------------------------------------------------------------------------
+
+\subsection{}
+\begin{frame}
+\frametitle{Survey vs. Repository}
+
+How often do you use.... 
+
+\begin{center}
+\begin{tabular}{llcr}
+\toprule
+\textbf{Group} & \textbf{Code} &  \textbf{Survey} & \textbf{Repo Rank} \\  \hline 
+endpoint anchors & (STR, END) & 4.4 & 7, 8\\ \hline 
+capture groups & (CG) & 4.2 & 2 \\ \hline 
+word boundaries & (WNW) & 3.5 & 22 \\ \hline 
+lazy repetition & (LZY) &  2.9 & 15 \\ \hline 
+(neg) look-ahead/behind &  (LKA, NLKA,  & 2.5 & 25, 21\\
+& LKB, NLKB) & & 28, 27\\
+\bottomrule
+\end{tabular}
+
+\textcolor{red}{Key: 6 = very frequently, 5 = frequently, 4 = occasionally, \\3 = rarely, 2 = very rarely, 1 = never}
+\end{center}
+
+\end{frame}
+
 
 \end{document}

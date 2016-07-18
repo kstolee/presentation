@@ -1,7 +1,7 @@
 % !TEX root = ../slides_ISSTA.tex
 \subsection{Behavioral Clustering}
 \begin{frame}
-\frametitle{Part 3}
+\frametitle{Part 3: Use Cases}
 
 \begin{block}{RQ4}
 How behaviorally similar are regexes across projects?
@@ -56,7 +56,7 @@ How behaviorally similar are regexes across projects?
 
 
 \begin{frame}[fragile]
-\frametitle{Example}
+\frametitle{Similarity metric example}
 
 \begin{Large}
 \begin{columns}
@@ -106,7 +106,7 @@ A and B are 80\% similar
 
 
 \begin{frame}
-\frametitle{Similarity Matrix $\rightarrow$ MCL}
+\frametitle{Similarity matrix $\rightarrow$ MCL}
 %\begin{figure}[ht]
 %  \centering
 %  \includegraphics[scale=0.65]{nontex/illustrations/minimalMatrix.eps}
@@ -169,18 +169,23 @@ Average scores to half-matrix for MCL\\
 \item<2-> 2,871 patterns analyzed from 722 (44\%) of the projects
 \begin{itemize}
 \item<2->186 clusters with size $\geq$ 2
-\item<2-> 2,042 unclustered regexes
+\item<2-> 2,042 clusters with size = 1
 \end{itemize}
 \end{itemize}
 
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Clustering Results}
+\frametitle{Example cluster}
+\vspace{-24pt}
 
-\begin{center}
-Example Cluster
-\end{center}
+%\onslide<2->{\begin{block}{}
+%\begin{center}
+%\begin{Large}
+%:
+%\end{Large}
+%\end{center}
+%\end{block}}
 \input{table/exampleCluster}
 %\begin{center}
 %}
@@ -190,33 +195,28 @@ Example Cluster
 %\end{center}
 \end{frame}
 
-\note[itemize]{
-    \item has2: 4694
-    \item bricsOK: 1415? 30\% or less
-    \item rexOK-actual: 2871 61\%
-}
 
 %------------------------------------------------
 
 
 \begin{frame}[fragile]
-\frametitle{Six Categories Of Clusters}
+\frametitle{Six categories of clusters}
 \input{table/clustercats}
 \begin{columns}[b]
-\column{.5\textwidth}
+\column{.4\textwidth}
 \begin{footnotesize}
 \begin{description}
-\item [Multi Matches] \cverb!(\s)!, \cverb!,|;!
-\item [Specific Char] \cverb!:+!, \cverb!}!, \cverb!%!
-\item [Anchored Patterns] \cverb!^[-_A-Za-z0-9]+$!
+\item %[Multi Matches] \cverb!(\s)!, \cverb!,|;!
+\item %[Specific Char] \cverb!:+!, \cverb!}!, \cverb!%!
+\item %[Anchored Patterns] \cverb!^[-_A-Za-z0-9]+$!
 \end{description}
 \end{footnotesize}
-\column{.5\textwidth}
+\column{.6\textwidth}
 \begin{footnotesize}
 \begin{description}
-\item [Two Or More Chars] \cverb!@[a-z]+!
-\item [Content of Parens] \cverb!<(.+)>!, \cverb!<[^>]*?>!
-\item [Code Search]\cverb!.*rlen=([0-9]+)!
+\item %[Two Or More Chars] \cverb!@[a-z]+!
+\item %[Content of Parens] \cverb!<(.+)>!, \cverb!<[^>]*?>!
+\item %[Code Search]\cverb!.*rlen=([0-9]+)!
 \end{description}
 \end{footnotesize}
 \end{columns}
@@ -227,6 +227,50 @@ Example Cluster
     \item technique ignores 39\%
     \item technique fails to cluster similar intent, similar syntax, similar rules, labels, etc.
 }
+
+
+
+\begin{frame}[fragile]
+\frametitle{Six categories of clusters}
+\begin{adjustbox}{width=0.95\textwidth}
+\begin{tabular}{p{1.25in}cccc}
+\toprule
+\textbf{Category} & \textbf{Clusters} & \textbf{Patterns} & \textbf{Projects} & \textbf{\% Projects} \\  \midrule
+ \\
+\midrule
+Specific Char & 17 & 103 & 184 & 25\% \\
+\midrule
+\\
+\midrule
+\\
+\midrule
+Content of Parens & 10 & 46 & 111 & 15\% \\
+\midrule
+Code Search & 15 & 27 & 92 & 13\% \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\begin{columns}[b]
+\column{.4\textwidth}
+\begin{footnotesize}
+\begin{description}
+\item [Specific Char] \cverb!:+!, \cverb!}!, \cverb!%!
+%\item [Multi Matches] \cverb!(\s)!, \cverb!,|;!
+%\item [Anchored Patterns] \cverb!^[-_A-Za-z0-9]+$!
+\end{description}
+\end{footnotesize}
+\column{.6\textwidth}
+\begin{footnotesize}
+\begin{description}
+%\item [Two Or More Chars] \cverb!@[a-z]+!
+\item [Content of Parens] \cverb!<(.+)>!, \cverb!<[^>]*?>!
+\item [Code Search]\cverb!.*rlen=([0-9]+)!
+\end{description}
+\end{footnotesize}
+\end{columns}
+\end{frame}
+
+
 
 
 %\begin{frame}
@@ -249,12 +293,13 @@ Example Cluster
 
 
 \begin{frame}
-\frametitle{Notable Observations}
+\frametitle{Notable observations: Use cases}
 
 \begin{block}{}
 \begin{itemize}
 	\item Finding a specific character is quite common, 25\% of projects (in contrast with survey)
-	\item Regexes are often used to parse source code!
+	\item Regexes are often used to capture the contents of ( ), $< >$, and $[$ $]$ (aligning with survey)
+	\item Regexes are often used to parse source code
 \end{itemize}
 \end{block}
 

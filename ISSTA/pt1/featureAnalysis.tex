@@ -86,18 +86,18 @@ Out of 3,898 pseudo-randomly selected Python projects, 1,645 (42\%) contained on
 \item [] \begin{footnotesize}12.7\% use behavioral flags\end{footnotesize}
 \item [] \begin{footnotesize}6.5\% were non-static patterns\end{footnotesize}
 \item [] \textbf{43,525} utilizations remain
-\item [] \textbf{13,711} distinct normalized patterns
-\item [] \begin{footnotesize}114 had various errors\end{footnotesize}
+\item<2-> [] \textbf{13,711} distinct normalized patterns
+\item<2-> [] \begin{footnotesize}114 had various errors\end{footnotesize}
 %\item [] \begin{footnotesize}17 had non-Python features\end{footnotesize}
 %\item [] \begin{footnotesize}22 had various errors\end{footnotesize}
 %\item [] \begin{footnotesize}2 had ECOM feature - too rare to include\end{footnotesize}
-\item [] \textbf{13,597} usable patterns remain for analysis
+\item<3-> [] \textbf{13,597} usable patterns from 1,645 projects remain for analysis
 \end{itemize}
 
-\onslide<2->
-\begin{block}{}
-Average utilizations per project: 32
-\end{block}
+%\onslide<4->
+%\begin{block}{}
+%Average utilizations per project: 32
+%\end{block}
 
 \end{frame}
 }
@@ -123,7 +123,7 @@ Average utilizations per project: 32
 
 
  \begin{frame}
- \frametitle{PCRE Parsing Patterns}
+ \frametitle{PCRE parsing patterns}
  \begin{figure}[h]
    \centering
    \includegraphics[scale=1.25]{nontex/illustrations/featureParsing.pdf}
@@ -131,8 +131,8 @@ Average utilizations per project: 32
  \end{figure}
  \begin{center}
  \begin{Large}
- \onslide<2->
- All Python features are recognizable by PCRE
+% \onslide<2->
+% All Python features are recognizable by PCRE
  \end{Large}
  \end{center}
  \end{frame}
@@ -166,7 +166,9 @@ Average utilizations per project: 32
 
 \begin{frame}[fragile]
 \frametitle{Feature statistics - Top 8}
+\begin{center}
 \input{table/features/topEight}
+\end{center}
 \end{frame}
 \note[itemize]{
     \item present in more than 50\% of projects
@@ -180,7 +182,7 @@ Average utilizations per project: 32
 
 \begin{itemize}
 \item Remember that we wanted to write a tool to support regex creation?
-\item<2-> But regex feature usage references were missing.
+\item<2-> But regex feature usage references were missing (not anymore!).
 \item <3-> So, 
 \end{itemize}
 

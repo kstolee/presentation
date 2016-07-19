@@ -1,12 +1,6 @@
 % !TEX root = ../slides_ISSTA.tex
 \subsection{Behavioral Clustering}
-\begin{frame}
-\frametitle{Part 3: Use Cases}
 
-\begin{block}{RQ4}
-How behaviorally similar are regexes across projects?
-\end{block}
-\end{frame}
 
 %{
 %\setbeamertemplate{background canvas}{\tikz[remember picture]\node[opacity=0.7] at (current page.center) {\includegraphics[keepaspectratio]{nontex/illustrations/swissArmyMess.jpg}};}
@@ -36,13 +30,23 @@ How behaviorally similar are regexes across projects?
 %\end{frame}
 
 \begin{frame}
-\frametitle{How to find common behaviors?}
+\frametitle{Part 3: Use Cases}
+
+\begin{block}{RQ4}
+How behaviorally similar are regexes across projects?
+\end{block}
+%\end{frame}
+%
+%\begin{frame}
+\onslide<2->
+\textbf{How to find measure similarity?}
+
 \begin{enumerate}
-\item \sout{thorough inspection of 53K utilizations}
-\item<2-> \sout{cluster by syntactic similarity like Jaccard or longest substring}
-\item<3-> \sout{formal analytical subsumption, no sufficient tools at the moment}
+\item<3-> \sout{by-hand inspection}
+\item<4-> \sout{cluster by syntactic similarity like Jaccard or longest substring}
+\item<5-> \sout{formal analytical subsumption, no sufficient tools at that moment}
 %\item \sout{formal analytical subsumption, using brics (30\% or less)}
-\item<4-> \begin{Large}Chosen technique: cluster by behavioral similarity using Rex \end{Large}
+\item<6-> \begin{Large}Chosen technique: cluster by behavioral similarity using matching string overlap \end{Large}
 \end{enumerate}
 \end{frame}
 \note[itemize]{
@@ -106,7 +110,7 @@ A and B are 80\% similar
 
 
 \begin{frame}
-\frametitle{Similarity matrix $\rightarrow$ MCL}
+\frametitle{Similarity matrix $\rightarrow$ Behavioral clusters}
 %\begin{figure}[ht]
 %  \centering
 %  \includegraphics[scale=0.65]{nontex/illustrations/minimalMatrix.eps}
@@ -297,8 +301,8 @@ Code Search & 15 & 27 & 92 & 13\% \\
 
 \begin{block}{}
 \begin{itemize}
-	\item Finding a specific character is quite common, 25\% of projects (in contrast with survey)
-	\item Regexes are often used to capture the contents of ( ), $< >$, and $[$ $]$ (aligning with survey)
+	\item Finding a specific character is quite common, 25\% of projects (\textbf{in contrast} with survey)
+	\item Regexes are often used to capture the contents of ( ), $< >$, and $[$ $]$ (\textbf{in agreement} with survey)
 	\item Regexes are often used to parse source code
 \end{itemize}
 \end{block}
@@ -311,6 +315,7 @@ but....
 \begin{itemize}
 	\item Similarity metric is approximate
 	\item Metric is perhaps \emph{too} sensitive to differences in literals
+	\item Regex patterns were analyzed out of context
 \end{itemize}
 \end{block}
 
